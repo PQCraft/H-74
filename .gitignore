@@ -2,11 +2,9 @@
 !/games/
 !/games/h74/
 !/games/h74/**
-!/games/h74dm/
-!/games/h74dm/**
 !/mods/
-!/mods/wavsounds/
-!/mods/wavsounds/**
+!/mods/hqsounds/
+!/mods/hqsounds/**
 !/.github/
 !/README.md
 .**
