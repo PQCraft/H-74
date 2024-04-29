@@ -1,3 +1,2 @@
 [ H-74 ]
-  mapbg = true # load a map for the menu background
-  mpmapbg = true # load a separate map for the multiplayer menu background
+  menubg = menubg
