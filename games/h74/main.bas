@@ -2,7 +2,7 @@
 
 #if module != module_server
     ' set up action controls
-    sub void actcontrols str name, str keys
+    sub actcontrols str name, str keys
         cfgset "actions", name, keys, false, true
     end
     #if platform != plat_dreamcast
@@ -10,7 +10,7 @@
             gosub actcontrols "menu", "k,esc;g,b,start"
         #else
             gosub actcontrols "menu", "k,backspace;g,b,start"
-        #end
+        #endif
         gosub actcontrols "fullscreen", "k,f11"
         gosub actcontrols "screenshot", "k,f2"
         gosub actcontrols "move_forwards", "k,w;g,a,-lefty"
@@ -49,52 +49,46 @@
         gosub actcontrols "altfire", "g,a,+lefttrigger"
         gosub actcontrols "use", "g,b,dpleft"
         gosub actcontrols "hotbar", "g,b,dpleft"
-    #end
+    #endif
     delsub actcontrols
-#end
+#endif
 
 ' set up actions
 #if module == module_server
-    sub void setaction str id, str name, str act
+    sub setaction str id, str name, str act
         setaction(id, name, act)
     end
 #else
-    sub void setaction str id, str name, str act
+    sub setaction str id, str name, str act
         dim keys as local str
         keys = cfgget("Actions", id)
         setaction(id, name, act, keys)
     end
-#end
-data str[][3] actions \
-    {"menu",            "Open Menu",            "menu"          },\
-    {"fullscreen",      "Toggle fullscreen",    "fullscreen"    },\
-    {"screenshot",      "Take screenshot",      "screenshot"    },\
-    {"move_forwards",   "Move forwards",        "move:+z"       },\
-    {"move_backwards"   "Move backwards",       "move:-z"       },\
-    {"move_left",       "Strafe left",          "move:-x"       },\
-    {"move_right",      "Strafe right",         "move:+x"       },\
-    {"look_up",         "Look up",              "look:+x"       },\
-    {"look_down",       "Look down",            "look:-x"       },\
-    {"look_left",       "Turn left",            "look:-y"       },\
-    {"look_right",      "Turn right",           "look:+y"       },\
-    {"walk",            "Walk",                 "walk"          },\
-    {"run",             "Run",                  "run"           },\
-    {"jump",            "Jump",                 "jump"          },\
-    {"crouch",          "Crouch",               "crouch"        },\
-    {"use",             "Use",                  "use"           },\
-    {"chat",            "Open chat",            "chat"          },\
-    {"teamchat",        "Open team chat",       "teamchat"      },\
-    {"voicechat",       "Voice chat",           "voicechat"     },\
-    {"teamvoicechat",   "Team voice chat",      "teamvoicechat" },\
-    {"inventory",       "Open inventory",       "custom:inv"    },\
-    {"scores",          "Show scores",          "custom:scores" },\
-    {"fly",             "Toggle fly",           "custom:fly"    },\
-    {"hotbar",          "Hotbar",               "custom:hotbar" }
-al = len(actions)
-for i = 0 until al
-    gosub setaction actions[i][0], actions[i][1], actions[i][2]
-end
-del al
+#endif
+gosub setaction "menu",           "Open Menu",         "menu"
+gosub setaction "fullscreen",     "Toggle fullscreen", "fullscreen"
+gosub setaction "screenshot",     "Take screenshot",   "screenshot"
+gosub setaction "move_forwards",  "Move forwards",     "move:+z"
+gosub setaction "move_backwards", "Move backwards",    "move:-z"
+gosub setaction "move_left",      "Strafe left",       "move:-x"
+gosub setaction "move_right",     "Strafe right",      "move:+x"
+gosub setaction "look_up",        "Look up",           "look:+y"
+gosub setaction "look_down",      "Look down",         "look:-y"
+gosub setaction "look_left",      "Turn left",         "look:-x"
+gosub setaction "look_right",     "Turn right",        "look:+x"
+gosub setaction "walk",           "Walk",              "walk"
+gosub setaction "run",            "Run",               "run"
+gosub setaction "jump",           "Jump",              "jump"
+gosub setaction "crouch",         "Crouch",            "crouch"
+gosub setaction "use",            "Use",               "use"
+gosub setaction "chat",           "Open chat",         "chat"
+gosub setaction "teamchat",       "Open team chat",    "teamchat"
+gosub setaction "voicechat",      "Voice chat",        "voicechat"
+gosub setaction "teamvoicechat",  "Team voice chat",   "teamvoicechat"
+gosub setaction "inventory",      "Open inventory",    "custom:inv"
+gosub setaction "scores",         "Show scores",       "custom:scores"
+gosub setaction "fly",            "Toggle fly",        "custom:fly"
+gosub setaction "hotbar",         "Hotbar",            "custom:hotbar"
 delsub setaction
 
 #if module == module_server
@@ -108,8 +102,8 @@ delsub setaction
 #else
 
     #if module == module_client
-        splash = ui(create image image "splash", width "100%", height "100%")
-    #end
+        splash = ui(create image path "splash", width "100%", height "100%")
+    #endif
 
     l = files(script, "scripts/client/")
     ll = len(l)
@@ -121,6 +115,6 @@ delsub setaction
         ui delete splash
         del splash
         start "scripts/menu"
-    #end
+    #endif
 
-#end
+#endif
