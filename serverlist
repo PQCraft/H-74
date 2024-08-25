@@ -1,0 +1,10 @@
+# H-74 server list
+
+# Invidual server
+# srv <ip> [port (45555 if not provided)]
+
+# A list of servers
+# lst {http|https}://<ip>[:port (if not provided, 80 for http and 443 for https)]/<path>
+# Format is expected to be a newline-separated list of <ip> [port (45555 if not provided)]
+
+lst http://pqcraft.ddns.net/Documents/h74-serverlist.txt
