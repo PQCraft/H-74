@@ -47,7 +47,7 @@
         gosub actcontrols "crouch", "g,b,dpdown"
         gosub actcontrols "fire", "g,a,+righttrigger"
         gosub actcontrols "altfire", "g,a,+lefttrigger"
-        gosub actcontrols "use", "g,b,dpleft"
+        gosub actcontrols "use", "g,b,dpright"
         gosub actcontrols "hotbar", "g,b,dpleft"
     #endif
     delsub actcontrols
