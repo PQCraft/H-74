@@ -6,6 +6,7 @@
 !/mods/
 !/mods/**
 !/.github/
+!/.github/**
 !/README.md
 .**
 !/.gitattributes
